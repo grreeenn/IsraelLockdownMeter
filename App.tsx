@@ -19,9 +19,8 @@ export default function App() {
 
   useEffect(() => {
     console.log('---------STATE APP!!----------');
-
     updateUserSettings();
-  }, [userSettings?.distance, userSettings?.address?.readable])
+  }, [])
 
   const updateUserSettings = async () => {
     console.log('updating context');
@@ -35,14 +34,14 @@ export default function App() {
 
   if (!isLoadingComplete) {
     return null;
-  } else {
-    return (
-      <GlobalContext.Provider value={state}>
-        <SafeAreaProvider>
-          <Navigation colorScheme={colorScheme}/>
-          <StatusBar/>
-        </SafeAreaProvider>
-      </GlobalContext.Provider>
-    );
   }
+  return (
+    <GlobalContext.Provider value={state}>
+      <SafeAreaProvider>
+        <Navigation colorScheme={colorScheme}/>
+        <StatusBar/>
+      </SafeAreaProvider>
+    </GlobalContext.Provider>
+  );
+
 }

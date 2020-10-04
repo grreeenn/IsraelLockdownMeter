@@ -26,9 +26,17 @@ export default function TabOneScreen() {
   const navigation = useNavigation()
 
   useEffect(() => {
-    console.log('---------STATE 1!!----------' + new Date())
+    console.log('---------STATE 1!!----------')
     setInitState();
   }, []);
+
+  useEffect(() => {
+    if (retries.current > 0) {
+      console.log('---------CONTEXT UPDATED!!----------', retries.current)
+      refreshLocation();
+    }
+
+  }, [context.userSettings]);
 
   const setInitState = async () => {
     const {status} = await requestPermissionsAsync();
@@ -37,7 +45,6 @@ export default function TabOneScreen() {
     }
     const isAddressSet = checkUserSettings();
     if (isAddressSet && retries.current < 1) {
-      console.log('---------------calling location for the first time---------------', retries.current);
       setStatus('Getting precise location...');
       setIsUpdatingLocation(true);
       await identifyLocation();
@@ -57,17 +64,15 @@ export default function TabOneScreen() {
     let location: LocationObject | null = null;
     retries.current === 0 && setStatus('');
     retries.current++;
-    console.log('iiiiiiiiiiii:', retries.current);
+    // console.log('iiiiiiiiiiii:', retries.current);
     try {
       location = await getCurrentPositionAsync({});
-      console.log('-------------------------retrieving location ', retries.current)
     } catch (e) {
       await identifyLocation();
-      console.log('---------------recursing location - caught an error---------------', retries.current)
     }
 
     if (location) {
-      console.log('++++++++++++++++++++++++++++++setting location: ', retries.current)
+      // console.log('++++++++++++++++++++++++++++++setting location: ', retries.current)
       const coords = {lat: location.coords.latitude, lon: location.coords.longitude}
       setLocation(coords);
       locationAccuracy.current = location.coords.accuracy ? Math.round(location.coords.accuracy) : null;
@@ -75,13 +80,11 @@ export default function TabOneScreen() {
     }
 
     if (location?.coords.accuracy && location?.coords.accuracy > 20 && retries.current < 10) {
-      console.log('---------------recursing location - not accurate---------------');
       await identifyLocation();
     } else if (location?.coords.accuracy && location?.coords.accuracy > 20 && retries.current >= 10) {
       setStatus(
         'Looks like you are in a building. GPS works poorly in buildings, please get a sky view'
       );
-      console.log('im in a building ' + new Date())
       setIsUpdatingLocation(false);
     } else {
       setStatus('');
@@ -90,16 +93,14 @@ export default function TabOneScreen() {
   }
 
   const refreshLocation = useCallback(() => {
-    console.log('------------------refreshing location-----------');
     retries.current = 0;
     locationAccuracy.current = null;
     setLocation(null);
     setIsUpdatingLocation(true);
     identifyLocation();
-  }, [location, locationAccuracy, context.userSettings?.address]);
+  }, [location, locationAccuracy, context.userSettings]);
 
   const calculateDistance = (location: ICoordinates) => {
-    console.log('/////////////////// calculating distance ')
     if (context.userSettings?.address && location) {
       const d = getDistanceFromLatLon(context.userSettings.address.coordinates, location)
       setDistance(d);

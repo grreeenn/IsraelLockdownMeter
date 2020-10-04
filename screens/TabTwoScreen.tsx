@@ -17,7 +17,7 @@ export default function TabTwoScreen() {
   const [isSettingDistance, setIsSettingDistance] = useState<boolean>(false);
 
   useEffect(() => {
-    console.log('---------STATE 2!!----------')
+    // console.log('---------STATE 2!!----------')
     setInitState();
   }, [])
 
@@ -29,7 +29,7 @@ export default function TabTwoScreen() {
   }
 
   const setAddress = async (a: IAddress | null) => {
-    console.log('Updating address')
+    // console.log('---------------------------Updating address')
     const saved = await saveToStorage('address', a);
     if (saved) {
       console.log('updated address', await getFromLocalStorage('address'));

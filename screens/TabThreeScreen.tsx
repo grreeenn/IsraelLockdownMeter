@@ -15,7 +15,7 @@ export default function TabThreeScreen() {
           It measures the air distance from you to your home, allowing you to stay in the know and avoid issues with the law.
         </Text>
         <Text>
-          It measures the air distance from you to your home, allowing you to stay in the know and avoid issues with the law.
+          All of the data you enter in the app is saved on your phone only.
         </Text>
       </View>
     </View>
