@@ -32,7 +32,8 @@ export default function TabOneScreen() {
 
   useEffect(() => {
     if (retries.current > 0) {
-      console.log('---------CONTEXT UPDATED!!----------', retries.current)
+      console.log('---------CONTEXT UPDATED!!----------', retries.current);
+      setErrorMsg(null);
       refreshLocation();
     }
 
@@ -43,21 +44,19 @@ export default function TabOneScreen() {
     if (status !== 'granted') {
       setErrorMsg('Permission to access location was denied');
     }
-    const isAddressSet = checkUserSettings();
-    if (isAddressSet && retries.current < 1) {
+    checkUserSettings();
+    if (retries.current < 1) {
       setStatus('Getting precise location...');
       setIsUpdatingLocation(true);
       await identifyLocation();
     }
   };
 
-  const checkUserSettings = (): boolean => {
+  const checkUserSettings = () => {
     if (!context?.userSettings?.address) {
       navigation.navigate('Settings');
       setErrorMsg('To use this app, please add your address in the settings tab');
-      return false;
     }
-    return true;
   }
 
   const identifyLocation = async () => {
@@ -115,8 +114,10 @@ export default function TabOneScreen() {
       setDistanceStyleState({...styles.distance, ...styles.hardWarn});
     } else if (locationAccuracy.current && (distance + locationAccuracy.current) > context.userSettings.distance) {
       setDistanceStyleState({...styles.distance, ...styles.softWarn});
+    } else {
+      setDistanceStyleState({...styles.distance, ...styles.noWarn});
     }
-    setDistanceStyleState({...styles.distance, ...styles.noWarn});
+
 
   };
 
