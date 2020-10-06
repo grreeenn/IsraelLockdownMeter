@@ -27,7 +27,8 @@
     "react-native/no-color-literals": "off",
     "@typescript-eslint/explicit-module-boundary-types": "off",
     "no-empty-function": "off",
-    "@typescript-eslint/no-empty-function": "off"
+    "@typescript-eslint/no-empty-function": "off",
+    "react/jsx-no-bind": "off"
   }
 
 

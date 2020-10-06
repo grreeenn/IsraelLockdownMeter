@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {TAutocompleteProps} from "../../types/IFormField";
-import {Text, View} from "../Themed";
-import {Button, TextInput} from "react-native";
+import {Text, View, TextInput} from "../Themed";
+import {Button} from "react-native";
 import { geocodeAsync } from 'expo-location';
 import {formFieldStyles} from "./formFieldStyles";
 import {IAddress} from "../../types/IGeography";

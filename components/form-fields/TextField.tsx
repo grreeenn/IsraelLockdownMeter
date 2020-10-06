@@ -1,7 +1,7 @@
 import {EKeyboardType, TTextInputProps} from "../../types/IFormField";
 import React, {useEffect, useState} from "react";
-import {Text, View} from "../Themed";
-import {Button, Keyboard, TextInput} from "react-native";
+import {Text, View, TextInput} from "../Themed";
+import {Button, Keyboard} from "react-native";
 import {formFieldStyles} from "./formFieldStyles";
 
 export default function TextField(props: TTextInputProps<string | number>) {
@@ -12,7 +12,7 @@ export default function TextField(props: TTextInputProps<string | number>) {
     if (value === null && props.initValue) {
       setValue(props.initValue);
     }
-  });
+  }, []);
 
   const emit = () => {
     props.emit(value);
@@ -28,6 +28,7 @@ export default function TextField(props: TTextInputProps<string | number>) {
             keyboardType={props.keyboardType || EKeyboardType.Default}
             onChangeText={text => setValue(text)}
             onSubmitEditing={emit}
+            onBlur={emit}
             style={styles.input}
             placeholder={props.placeholder}
           />
