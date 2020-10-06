@@ -1,15 +1,17 @@
 import React, {useCallback, useContext, useEffect, useRef, useState} from 'react';
 import {ImageStyle, StyleSheet, TextStyle, ViewStyle} from 'react-native';
-import {Text, View} from '../components/Themed';
-import {ICoordinates} from "../types/IGeography";
+import {Text, View} from '../../components/Themed';
+import {ICoordinates} from "../../types/IGeography";
 import {useNavigation} from '@react-navigation/native'
-import {getDistanceFromLatLon} from "../utils/LocationUtils";
-import {GlobalContext} from "../GlobalContext";
-import Button from "../components/Button";
+import {getDistanceFromLatLon} from "../../utils/LocationUtils";
+import {GlobalContext} from "../../GlobalContext";
+import Button from "../../components/Button";
 import {LocationObject} from "expo-location/src/Location.types";
 import {getCurrentPositionAsync, requestPermissionsAsync} from "expo-location";
+import {useTranslation} from "react-i18next";
 
 export default function TabOneScreen() {
+  const [t] = useTranslation(['measure']);
 
   const context = useContext(GlobalContext);
 
@@ -42,11 +44,11 @@ export default function TabOneScreen() {
   const setInitState = async () => {
     const {status} = await requestPermissionsAsync();
     if (status !== 'granted') {
-      setErrorMsg('Permission to access location was denied');
+      setErrorMsg(t('ErrLocationPermissionDenied'));
     }
     checkUserSettings();
     if (retries.current < 1) {
-      setStatus('Getting precise location...');
+      setStatus(t('StatusGettingLocation'));
       setIsUpdatingLocation(true);
       await identifyLocation();
     }
@@ -55,7 +57,7 @@ export default function TabOneScreen() {
   const checkUserSettings = () => {
     if (!context?.userSettings?.address) {
       navigation.navigate('Settings');
-      setErrorMsg('To use this app, please add your address in the settings tab');
+      setErrorMsg(t('ErrNoAddress'));
     }
   }
 
@@ -81,9 +83,7 @@ export default function TabOneScreen() {
     if (location?.coords.accuracy && location?.coords.accuracy > 20 && retries.current < 10) {
       await identifyLocation();
     } else if (location?.coords.accuracy && location?.coords.accuracy > 20 && retries.current >= 10) {
-      setStatus(
-        'Looks like you are in a building. GPS works poorly in buildings, please get a sky view'
-      );
+      setStatus(t('StatusNoSkyView'));
       setIsUpdatingLocation(false);
     } else {
       setStatus('');
@@ -131,9 +131,9 @@ export default function TabOneScreen() {
 
       {distance ?
         <>
-          <Text>Distance from home:</Text>
+          <Text>{t('DistanceFromHome')}</Text>
           <Text style={distanceStyle}>
-            {distance} meters
+            {distance} {t('Meters')}
           </Text>
         </>
         : []
@@ -142,8 +142,8 @@ export default function TabOneScreen() {
       {!isUpdatingLocation ?
         <>
           <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)"/>
-          <Button title={'Refresh location'} onPress={refreshLocation}/>
-          {locationAccuracy ? <Text>Location accuracy: {locationAccuracy.current} meters</Text> : []}
+          <Button title={t('RefreshLocation')} onPress={refreshLocation}/>
+          {locationAccuracy ? <Text>{t('LocationAccuracy')}: {locationAccuracy.current} {t('Meters')}</Text> : []}
         </>
         : []}
 

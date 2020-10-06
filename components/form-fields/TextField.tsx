@@ -1,6 +1,5 @@
 import {EKeyboardType, TTextInputProps} from "../../types/IFormField";
-import * as React from "react";
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {Text, View} from "../Themed";
 import {Button, Keyboard, TextInput} from "react-native";
 import {formFieldStyles} from "./formFieldStyles";

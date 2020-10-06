@@ -19,13 +19,22 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": false,
+      "infoPlist": {
+        "CFBundleAllowMixedLocalizations": true,
+        "NSLocationWhenInUseUsageDescription": "We need to access your location to calculate the distance to your home"
+      }
+    },
+    "locales": {
+      "en": "./assets/metadata-translation/english.json",
+      "he": "./assets/metadata-translation/hebrew.json"
     },
     "web": {
       "favicon": "./assets/images/favicon.png"
     },
     "android": {
-      "package": "org.grreeenn.lockdownmeter"
+      "package": "org.grreeenn.ishomefar",
+      "permissions": ["ACCESS_COARSE_LOCATION", "ACCESS_FINE_LOCATION"]
     }
   }
 }

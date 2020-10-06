@@ -1,22 +1,25 @@
 import React from 'react';
 import {StyleSheet} from 'react-native';
-import {View, Text} from '../components/Themed';
+import {View, Text} from '../../components/Themed';
+import {useTranslation} from "react-i18next";
 
 
 export default function TabThreeScreen() {
+  const [t] = useTranslation(['about']);
 
   return (
     <View style={styles.container}>
       <View>
         <Text>
-          This app helps you to follow the Israeli Lockdown rules.
+          {t('AboutP1')}
         </Text>
         <Text>
-          It measures the air distance from you to your home, allowing you to stay in the know and avoid issues with the law.
+          {t('AboutP2')}
         </Text>
         <Text>
-          All of the data you enter in the app is saved on your phone only.
+          {t('AboutP3')}
         </Text>
+
       </View>
     </View>
   );

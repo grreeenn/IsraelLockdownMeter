@@ -10,6 +10,7 @@ import {getFromLocalStorage} from "./utils/LocalStorage";
 import {IAddress} from "./types/IGeography";
 import {GlobalContext} from "./GlobalContext";
 
+
 export default function App() {
 
   const isLoadingComplete = useCachedResources();
@@ -36,12 +37,12 @@ export default function App() {
     return null;
   }
   return (
-    <GlobalContext.Provider value={state}>
-      <SafeAreaProvider>
-        <Navigation colorScheme={colorScheme}/>
-        <StatusBar/>
-      </SafeAreaProvider>
-    </GlobalContext.Provider>
+      <GlobalContext.Provider value={state}>
+        <SafeAreaProvider>
+          <Navigation colorScheme={colorScheme}/>
+          <StatusBar/>
+        </SafeAreaProvider>
+      </GlobalContext.Provider>
   );
 
 }

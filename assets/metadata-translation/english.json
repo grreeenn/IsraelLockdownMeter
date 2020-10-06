@@ -1,0 +1,4 @@
+{
+  "CFBundleDisplayName": "Is Home Far",
+  "NSLocationWhenInUseUsageDescription": "We need to access your location to calculate the distance to your home"
+}

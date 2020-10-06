@@ -1,0 +1,29 @@
+{
+  "en": {
+    "Settings": "Settings",
+    "AddressPlaceholder": "Set your address",
+    "AddressCaption": "Your address",
+    "DistancePlaceholder": "Set permitted distance",
+    "DistanceCaption": "Permitted distance is",
+    "Set": "set",
+    "ShowOnMap": "Show on map",
+    "ChangeAddress": "Change address",
+    "ChangeDistance": "Change distance",
+    "Meters": "meters"
+  },
+  "he": {
+    "Settings": "הגדרות",
+    "AddressPlaceholder": "הזן כתובתך",
+    "AddressCaption": "כתובתך",
+    "DistancePlaceholder": "הזן את המרחק המותר",
+    "DistanceCaption": "המרחק המותר",
+    "Set": "אישור",
+    "ShowOnMap": "הצג על המפה",
+    "ChangeAddress": "שינוי כתובת",
+    "ChangeDistance": "שינוי מרחק המותר",
+    "Meters": "מטרים"
+  },
+  "ns": "settings"
+}
+
+

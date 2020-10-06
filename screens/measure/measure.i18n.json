@@ -1,0 +1,24 @@
+{
+  "en": {
+    "ErrLocationPermissionDenied": "Permission to access location was denied",
+    "ErrNoAddress": "To use this app, please add your address in the settings tab",
+    "StatusGettingLocation": "Getting precise location...",
+    "StatusNoSkyView": "Looks like you are in a building. GPS works poorly in buildings, please get a sky view",
+    "DistanceFromHome": "Distance from home",
+    "Meters": "meters",
+    "RefreshLocation": "Refresh location",
+    "LocationAccuracy": "Location accuracy"
+
+  },
+  "he": {
+    "ErrLocationPermissionDenied": "אין הרשאה להשתמש בשרותי מיקום",
+    "ErrNoAddress": "אנא הזן את כתובתך בלשונית ההגדרות",
+    "StatusGettingLocation": "מברר מיקום מדויק...",
+    "StatusNoSkyView": "נראה שהנכם נמצאים במבנה. שירות מיקום לוויני לא עובד טוב במבנים, אנא צאו החוצה",
+    "DistanceFromHome": "מרחק מהבית הינו",
+    "Meters": "מטרים",
+    "RefreshLocation": "רענן מיקום",
+    "LocationAccuracy": "המיקום מדויק עד"
+  },
+  "ns": "measure"
+}

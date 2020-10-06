@@ -1,6 +1,12 @@
 {
-  "extends": ["react-native"],
-  "plugins": ["react", "react-hooks"],
+  "parser": "@typescript-eslint/parser",
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "react-native"
+  ],
+  "plugins": ["@typescript-eslint", "react", "react-hooks"],
   "settings": {
     "import/resolver": {
       "node": {
@@ -16,8 +22,12 @@
     "react-hooks/exhaustive-deps": "warn",
     "import/no-unresolved": "off",
     "import/named": "off",
-    "no-use-before-define": ["error", { "variables": false }],
-    "react-native/no-color-literals": "off"
+    "no-use-before-define": "off",
+    "@typescript-eslint/no-use-before-define": ["error", { "variables": false }],
+    "react-native/no-color-literals": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "no-empty-function": "off",
+    "@typescript-eslint/no-empty-function": "off"
   }
 
 

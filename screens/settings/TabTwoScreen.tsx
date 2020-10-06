@@ -1,13 +1,14 @@
 import React, {useCallback, useContext, useEffect, useState} from 'react';
 import {Linking, Platform, StyleSheet} from 'react-native';
-import {Text, View} from '../components/Themed';
-import AddressSelect from "../components/form-fields/AddressSelect";
-import TextField from "../components/form-fields/TextField";
-import {EKeyboardType} from "../types/IFormField";
-import Button from "../components/Button";
-import {getFromLocalStorage, saveToStorage} from "../utils/LocalStorage";
-import {IAddress} from "../types/IGeography";
-import {GlobalContext} from "../GlobalContext";
+import {Text, View} from '../../components/Themed';
+import AddressSelect from "../../components/form-fields/AddressSelect";
+import TextField from "../../components/form-fields/TextField";
+import {EKeyboardType} from "../../types/IFormField";
+import Button from "../../components/Button";
+import {getFromLocalStorage, saveToStorage} from "../../utils/LocalStorage";
+import {IAddress} from "../../types/IGeography";
+import {GlobalContext} from "../../GlobalContext";
+import { useTranslation } from 'react-i18next';
 
 
 export default function TabTwoScreen() {
@@ -15,6 +16,8 @@ export default function TabTwoScreen() {
 
   const [isSettingAddress, setIsSettingAddress] = useState<boolean>(false);
   const [isSettingDistance, setIsSettingDistance] = useState<boolean>(false);
+  const [t] = useTranslation(['settings']);
+
 
   useEffect(() => {
     // console.log('---------STATE 2!!----------')
@@ -73,7 +76,7 @@ export default function TabTwoScreen() {
   return (
     <View style={styles.container}>
       <View style={{alignItems: "center"}}>
-        <Text style={styles.title}>Settings</Text>
+        <Text style={styles.title}>{t('Settings')}</Text>
         <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)"/>
       </View>
 
@@ -82,19 +85,19 @@ export default function TabTwoScreen() {
           <View style={styles.valueAndControls}>
             <View style={styles.valueContainer}>
               <Text>
-                Your address is:
+                {t('AddressCaption')}
               </Text>
               <Text style={styles.values}>
                 {context.userSettings?.address?.readable}
               </Text>
             </View>
             <View style={styles.buttonsContainer}>
-              <Button title={'Show on map'} onPress={goToMap} {...styles.controlButton} />
-              <Button title={'Change address'} onPress={changeAddress} {...styles.controlButton} />
+              <Button title={t('ShowOnMap')} onPress={goToMap} {...styles.controlButton} />
+              <Button title={t('ChangeAddress')} onPress={changeAddress} {...styles.controlButton} />
             </View>
           </View>
           :
-          <AddressSelect placeholder={'Address'} emit={setAddress} initValue={context.userSettings?.address}/>
+          <AddressSelect placeholder={t('AddressPlaceholder')} emit={setAddress} initValue={context.userSettings?.address}/>
       }
 
       {
@@ -102,19 +105,19 @@ export default function TabTwoScreen() {
           <View style={styles.valueAndControls}>
             <View style={styles.valueContainer}>
               <Text>
-                Permitted distance is:
+                {t('DistanceCaption')}
               </Text>
               <Text style={styles.values}>
                 {context.userSettings?.distance}
               </Text>
             </View>
             <View style={styles.buttonsContainer}>
-              <Button title={'Change distance'} onPress={changeDistance} {...styles.controlButton} />
+              <Button title={t('ChangeDistance')} onPress={changeDistance} {...styles.controlButton} />
             </View>
           </View>
           :
           <TextField
-            placeholder={'Permitted distance'}
+            placeholder={t('DistancePlaceholder')}
             emit={setDistance}
             initValue={context.userSettings?.distance}
             keyboardType={EKeyboardType.DecimalPad}
@@ -137,6 +140,7 @@ const styles = StyleSheet.create({
   values: {
     fontSize: 18,
     fontWeight: 'bold',
+    textAlign: "left"
   },
   separator: {
     marginVertical: 30,

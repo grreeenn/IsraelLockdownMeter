@@ -11,3 +11,5 @@ export const GlobalContext = createContext<TGlobalContext>({
     updateUserSettings: () => {}
   }
 );
+
+export const LocalizationContext = createContext({});

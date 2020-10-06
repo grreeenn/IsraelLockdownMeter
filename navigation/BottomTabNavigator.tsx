@@ -5,10 +5,10 @@ import React from 'react';
 
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
-import TabOneScreen from '../screens/TabOneScreen';
-import TabTwoScreen from '../screens/TabTwoScreen';
+import TabOneScreen from '../screens/measure/TabOneScreen';
+import TabTwoScreen from '../screens/settings/TabTwoScreen';
 import {BottomTabParamList, TabOneParamList, TabThreeParamList, TabTwoParamList} from '../types';
-import TabThreeScreen from "../screens/TabThreeScreen";
+import TabThreeScreen from "../screens/about/TabThreeScreen";
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
