@@ -3,8 +3,11 @@ import React, {useEffect, useState} from "react";
 import {Text, View, TextInput} from "../Themed";
 import {Button, Keyboard} from "react-native";
 import {formFieldStyles} from "./formFieldStyles";
+import {useTranslation} from "react-i18next";
 
 export default function TextField(props: TTextInputProps<string | number>) {
+  const [t] = useTranslation(['formFields']);
+
   const [value, setValue] = useState<string | number | null>(null);
   const [error, setError] = useState<string | null>(null);
 
@@ -32,7 +35,7 @@ export default function TextField(props: TTextInputProps<string | number>) {
             style={styles.input}
             placeholder={props.placeholder}
           />
-          <Button title={'Set'} onPress={emit}/>
+          <Button title={t('Set')} onPress={emit}/>
         </View>
       </View>
       <View style={{flexDirection: "row"}}>

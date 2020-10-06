@@ -5,8 +5,11 @@ import {Button} from "react-native";
 import { geocodeAsync } from 'expo-location';
 import {formFieldStyles} from "./formFieldStyles";
 import {IAddress} from "../../types/IGeography";
+import {useTranslation} from "react-i18next";
 
 export default function AddressSelect(props: TAutocompleteProps<IAddress>) {
+  const [t] = useTranslation(['formFields']);
+
   const [addressString, setAddressString] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
 
@@ -45,10 +48,11 @@ export default function AddressSelect(props: TAutocompleteProps<IAddress>) {
             value={addressString ?? ''}
             onChangeText={text => setAddressString(text)}
             onSubmitEditing={geocodeAndEmit}
+            onBlur={geocodeAndEmit}
             style={styles.input}
             placeholder={props.placeholder}
           />
-          <Button title={'Set'} onPress={geocodeAndEmit}/>
+          <Button title={t('Set')} onPress={geocodeAndEmit}/>
         </View>
       </View>
       <View style={{flexDirection: "row"}}>
