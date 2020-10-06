@@ -5,7 +5,7 @@ import AddressSelect from "../../components/form-fields/AddressSelect";
 import TextField from "../../components/form-fields/TextField";
 import {EKeyboardType} from "../../types/IFormField";
 import Button from "../../components/Button";
-import {getFromLocalStorage, saveToStorage} from "../../utils/LocalStorage";
+import {saveToStorage} from "../../utils/LocalStorage";
 import {IAddress} from "../../types/IGeography";
 import {GlobalContext} from "../../GlobalContext";
 import { useTranslation } from 'react-i18next';
@@ -35,7 +35,7 @@ export default function TabTwoScreen() {
     // console.log('---------------------------Updating address')
     const saved = await saveToStorage('address', a);
     if (saved) {
-      console.log('updated address', await getFromLocalStorage('address'));
+      // console.log('updated address', await getFromLocalStorage('address'));
       context.updateUserSettings();
       a && setIsSettingAddress(false);
     } else {
@@ -45,7 +45,7 @@ export default function TabTwoScreen() {
   }
 
   const setDistance = (d: string | number | null) => {
-    console.log('Updating distance')
+    // console.log('Updating distance')
     d = d === null ? null : +d;
     saveToStorage('distance', d);
     context.updateUserSettings();

@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import {TAutocompleteProps} from "../../types/IFormField";
-import {Text, View, TextInput} from "../Themed";
+import {Text, TextInput, View} from "../Themed";
 import {Button} from "react-native";
-import { geocodeAsync } from 'expo-location';
+import {geocodeAsync} from 'expo-location';
 import {formFieldStyles} from "./formFieldStyles";
 import {IAddress} from "../../types/IGeography";
 import {useTranslation} from "react-i18next";
@@ -32,7 +32,7 @@ export default function AddressSelect(props: TAutocompleteProps<IAddress>) {
           }
         };
         props.emit(value);
-        setError( null);
+        setError(null);
       } else {
 
         props.emit(null);
@@ -41,23 +41,25 @@ export default function AddressSelect(props: TAutocompleteProps<IAddress>) {
   }
 
   return (
-    <View style={{alignItems: "center", alignContent: "center"}}>
-      <View style={{flexDirection: "row"}}>
-        <View style={styles.inputContainer}>
-          <TextInput
-            value={addressString ?? ''}
-            onChangeText={text => setAddressString(text)}
-            onSubmitEditing={geocodeAndEmit}
-            onBlur={geocodeAndEmit}
-            style={styles.input}
-            placeholder={props.placeholder}
-          />
+    <View style={styles.componentContainer}>
+      <View style={styles.row}>
+        <View style={styles.inputAndButtonContainer}>
+          <View style={styles.inputContainer}>
+            <TextInput
+              value={addressString ?? ''}
+              onChangeText={text => setAddressString(text)}
+              onSubmitEditing={geocodeAndEmit}
+              onBlur={geocodeAndEmit}
+              style={styles.input}
+              placeholder={props.placeholder}
+            />
+          </View>
           <Button title={t('Set')} onPress={geocodeAndEmit}/>
         </View>
       </View>
-      <View style={{flexDirection: "row"}}>
+      <View style={styles.row}>
         {
-          error ? <Text style={{color: 'red'}}>{error}</Text> : []
+          error ? <Text style={styles.errorText}>{error}</Text> : []
         }
       </View>
     </View>

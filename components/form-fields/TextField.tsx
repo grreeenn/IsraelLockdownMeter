@@ -1,6 +1,6 @@
 import {EKeyboardType, TTextInputProps} from "../../types/IFormField";
 import React, {useEffect, useState} from "react";
-import {Text, View, TextInput} from "../Themed";
+import {Text, TextInput, View} from "../Themed";
 import {Button, Keyboard} from "react-native";
 import {formFieldStyles} from "./formFieldStyles";
 import {useTranslation} from "react-i18next";
@@ -23,24 +23,26 @@ export default function TextField(props: TTextInputProps<string | number>) {
   }
 
   return (
-    <View style={{alignItems: "center", alignContent: "center"}}>
-      <View style={{flexDirection: "row"}}>
-        <View style={styles.inputContainer}>
-          <TextInput
-            value={(value?.toString()) ?? ''}
-            keyboardType={props.keyboardType || EKeyboardType.Default}
-            onChangeText={text => setValue(text)}
-            onSubmitEditing={emit}
-            onBlur={emit}
-            style={styles.input}
-            placeholder={props.placeholder}
-          />
+    <View style={styles.componentContainer}>
+      <View style={styles.row}>
+        <View style={styles.inputAndButtonContainer}>
+          <View style={styles.inputContainer}>
+            <TextInput
+              value={(value?.toString()) ?? ''}
+              keyboardType={props.keyboardType || EKeyboardType.Default}
+              onChangeText={text => setValue(text)}
+              onSubmitEditing={emit}
+              onBlur={emit}
+              style={styles.input}
+              placeholder={props.placeholder}
+            />
+          </View>
           <Button title={t('Set')} onPress={emit}/>
         </View>
       </View>
-      <View style={{flexDirection: "row"}}>
+      <View style={styles.row}>
         {
-          error ? <Text style={{color: 'red'}}>{error}</Text> : []
+          error ? <Text style={styles.errorText}>{error}</Text> : []
         }
       </View>
     </View>
