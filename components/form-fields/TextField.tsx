@@ -2,7 +2,7 @@ import {EKeyboardType, TTextInputProps} from "../../types/IFormField";
 import React, {useEffect, useState} from "react";
 import {Text, TextInput, View} from "../Themed";
 import {Button, Keyboard} from "react-native";
-import {formFieldStyles} from "./formFieldStyles";
+import formFieldStyles from "./formFieldStyles";
 import {useTranslation} from "react-i18next";
 
 export default function TextField(props: TTextInputProps<string | number>) {

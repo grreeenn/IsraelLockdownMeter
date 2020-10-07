@@ -1,6 +1,8 @@
 import settings from "../screens/settings/settings.i18n.json";
 import measure from "../screens/measure/measure.i18n.json";
 import about from "../screens/about/about.i18n.json";
+import formFields from "../components/form-fields/formFields.i18n.json";
+import navigation from "../navigation/navigation.i18n.json";
 import {ESupportedLocale, TNamespacesWithTranslations, TTranslationsFile} from "../types/i18n";
 
 
@@ -21,7 +23,9 @@ export const supportedLocales = {
 const translations: TTranslationsFile[] = [
   settings,
   measure,
-  about
+  about,
+  formFields,
+  navigation
 ];
 export const namespaces = translations.map(t => t.ns);
 

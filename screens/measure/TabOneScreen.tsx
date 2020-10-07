@@ -124,8 +124,6 @@ export default function TabOneScreen() {
 
   return (
     <View style={styles.container}>
-
-
       {status ? <Text>{status}</Text> : []}
       {errorMsg ? <Text>{errorMsg}</Text> : []}
 
@@ -146,7 +144,6 @@ export default function TabOneScreen() {
           {locationAccuracy ? <Text>{t('LocationAccuracy')}: {locationAccuracy.current} {t('Meters')}</Text> : []}
         </>
         : []}
-
     </View>
   );
 }

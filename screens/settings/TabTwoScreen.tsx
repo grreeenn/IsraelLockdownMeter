@@ -28,7 +28,7 @@ export default function TabTwoScreen() {
     !context.userSettings?.address && setIsSettingAddress(true);
 
     const d = context.userSettings?.distance ?? null;
-    if (d === null || d === undefined) setIsSettingDistance(true);
+    if (d === null || d === undefined) setDistance(1000);
   }
 
   const setAddress = async (a: IAddress | null) => {
@@ -108,7 +108,7 @@ export default function TabTwoScreen() {
                 {t('DistanceCaption')}
               </Text>
               <Text style={styles.values}>
-                {context.userSettings?.distance}
+                {context.userSettings?.distance} {t('Meters')}
               </Text>
             </View>
             <View style={styles.buttonsContainer}>

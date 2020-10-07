@@ -3,7 +3,7 @@ import {TAutocompleteProps} from "../../types/IFormField";
 import {Text, TextInput, View} from "../Themed";
 import {Button} from "react-native";
 import {geocodeAsync} from 'expo-location';
-import {formFieldStyles} from "./formFieldStyles";
+import formFieldStyles from "./formFieldStyles";
 import {IAddress} from "../../types/IGeography";
 import {useTranslation} from "react-i18next";
 

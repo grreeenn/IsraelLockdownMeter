@@ -1,6 +1,6 @@
 import {StyleSheet} from "react-native";
 
-export const formFieldStyles = StyleSheet.create({
+const formFieldStyles = StyleSheet.create({
   componentContainer: {
     alignItems: "center",
     alignContent: "center",
@@ -29,3 +29,5 @@ export const formFieldStyles = StyleSheet.create({
     color: 'red'
   }
 });
+
+export default formFieldStyles;

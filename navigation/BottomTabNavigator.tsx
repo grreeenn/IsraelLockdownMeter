@@ -9,40 +9,10 @@ import TabOneScreen from '../screens/measure/TabOneScreen';
 import TabTwoScreen from '../screens/settings/TabTwoScreen';
 import {BottomTabParamList, TabOneParamList, TabThreeParamList, TabTwoParamList} from '../types';
 import TabThreeScreen from "../screens/about/TabThreeScreen";
+import {useTranslation} from "react-i18next";
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
-export default function BottomTabNavigator() {
-  const colorScheme = useColorScheme();
-
-  return (
-    <BottomTab.Navigator
-      initialRouteName="Measure"
-      tabBarOptions={{ activeTintColor: Colors[colorScheme].tint }}>
-      <BottomTab.Screen
-        name="About"
-        component={TabThreeNavigator}
-        options={{
-          tabBarIcon: ({ color }) => <TabBarIcon name="md-paw" color={color} />,
-        }}
-      />
-      <BottomTab.Screen
-        name="Measure"
-        component={TabOneNavigator}
-        options={{
-          tabBarIcon: ({ color }) => <TabBarIcon name="ios-resize" color={color} />,
-        }}
-      />
-      <BottomTab.Screen
-        name="Settings"
-        component={TabTwoNavigator}
-        options={{
-          tabBarIcon: ({ color }) => <TabBarIcon name="ios-settings" color={color} />,
-        }}
-      />
-    </BottomTab.Navigator>
-  );
-}
 
 // You can explore the built-in icon families and icons on the web at:
 // https://icons.expo.fyi/
@@ -55,12 +25,13 @@ function TabBarIcon(props: { name: string; color: string }) {
 const TabOneStack = createStackNavigator<TabOneParamList>();
 
 function TabOneNavigator() {
+  const [t] = useTranslation(['navigation'])
   return (
     <TabOneStack.Navigator>
       <TabOneStack.Screen
         name="TabOneScreen"
         component={TabOneScreen}
-        options={{ headerTitle: 'Measure' }}
+        options={{ headerTitle: t('Measure') }}
       />
     </TabOneStack.Navigator>
   );
@@ -69,12 +40,13 @@ function TabOneNavigator() {
 const TabTwoStack = createStackNavigator<TabTwoParamList>();
 
 function TabTwoNavigator() {
+  const [t] = useTranslation(['navigation'])
   return (
     <TabTwoStack.Navigator>
       <TabTwoStack.Screen
         name="TabTwoScreen"
         component={TabTwoScreen}
-        options={{ headerTitle: 'Settings' }}
+        options={{ headerTitle: t('Settings') }}
       />
     </TabTwoStack.Navigator>
   );
@@ -83,13 +55,50 @@ function TabTwoNavigator() {
 const TabThreeStack = createStackNavigator<TabThreeParamList>();
 
 function TabThreeNavigator() {
+  const [t] = useTranslation(['navigation'])
   return (
     <TabThreeStack.Navigator>
       <TabThreeStack.Screen
         name="TabThreeScreen"
         component={TabThreeScreen}
-        options={{ headerTitle: 'About' }}
+        options={{ headerTitle: t('About') }}
       />
     </TabThreeStack.Navigator>
   );
 }
+export default function BottomTabNavigator() {
+  const [t] = useTranslation(['navigation'])
+  const colorScheme = useColorScheme();
+
+  return (
+    <BottomTab.Navigator
+      initialRouteName="Measure"
+      tabBarOptions={{ activeTintColor: Colors[colorScheme].tint }}>
+      <BottomTab.Screen
+        name="About"
+        component={TabThreeNavigator}
+        options={{
+          tabBarIcon: ({ color }) => <TabBarIcon name="md-paw" color={color} />,
+          tabBarLabel: t('About')
+        }}
+      />
+      <BottomTab.Screen
+        name="Measure"
+        component={TabOneNavigator}
+        options={{
+          tabBarIcon: ({ color }) => <TabBarIcon name="ios-resize" color={color} />,
+          tabBarLabel: t('Measure')
+        }}
+      />
+      <BottomTab.Screen
+        name="Settings"
+        component={TabTwoNavigator}
+        options={{
+          tabBarIcon: ({ color }) => <TabBarIcon name="ios-settings" color={color} />,
+          tabBarLabel: t('Settings')
+        }}
+      />
+    </BottomTab.Navigator>
+  );
+}
+
