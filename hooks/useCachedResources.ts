@@ -4,7 +4,7 @@ import {hideAsync, preventAutoHideAsync} from 'expo-splash-screen';
 import React from 'react';
 import i18n from "../i18n/i18n.init";
 import {I18nManager as RNI18nManager} from "react-native";
-import {Updates} from "expo";
+import { reloadAsync } from "expo-updates";
 
 export default function useCachedResources() {
   const [isLoadingComplete, setLoadingComplete] = React.useState(false);
@@ -32,7 +32,8 @@ export default function useCachedResources() {
 
           // RN won't set the layout direction if we
           // don't restart the app's JavaScript.
-          Updates.reloadFromCache();
+          // this call won't restart it either, though :(
+          reloadAsync();
         }
 
       } catch (e) {

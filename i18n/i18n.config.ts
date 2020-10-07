@@ -6,14 +6,16 @@ import navigation from "../navigation/navigation.i18n.json";
 import {ESupportedLocale, TNamespacesWithTranslations, TTranslationsFile} from "../types/i18n";
 
 
-export const fallbackLang = "he";
+export const fallbackLang = ESupportedLocale.Hebrew;
 export const supportedLocales = {
   [ESupportedLocale.English]: {
     name: "English",
+    direction: 'LTR',
     translationFileLoader: () => getTranslations(ESupportedLocale.English),
   },
   [ESupportedLocale.Hebrew]: {
     name: "עברית",
+    direction: 'RTL',
     translationFileLoader: () => getTranslations(ESupportedLocale.Hebrew),
   },
 };

@@ -1,9 +1,9 @@
 import i18next, {TOptions} from 'i18next';
 import {I18nManager as RNI18nManager} from 'react-native';
-import {fallbackLang, namespaces} from './i18n.config';
+import {fallbackLang, namespaces, supportedLocales} from './i18n.config';
 import languageDetectorPlugin from './languageDetector.plugin';
 import translationLoader from './translationLoader.plugin';
-import {TLayoutDirection} from "../types/i18n";
+import {ESupportedLocale, TLayoutDirection} from "../types/i18n";
 import {initReactI18next} from "react-i18next";
 
 const i18n = {
@@ -36,7 +36,10 @@ const i18n = {
   },
 
   get dir(): TLayoutDirection {
-    return i18next.dir().toUpperCase() as TLayoutDirection;
+    if (supportedLocales[this.locale as ESupportedLocale]) {
+      return i18next.dir().toUpperCase() as TLayoutDirection;
+    }
+    return supportedLocales[fallbackLang].direction as TLayoutDirection;
   },
 
   get isRTL(): boolean {

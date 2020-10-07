@@ -2,12 +2,16 @@
   "en": {
     "AboutP1": "This app helps you to follow the Israeli Lockdown rules.",
     "AboutP2": "It measures the air distance from you to your home, allowing you to stay in the know and avoid breaking the law.",
-    "AboutP3": "You'd also be able to display this distance to the law enforcement and avoid fines."
+    "AboutP3": "You'd also be able to display this distance to the law enforcement and avoid fines.",
+    "AboutP4": "This app is open source:",
+    "SeeTheCode": "Open source code"
   },
   "he": {
     "AboutP1": "אפליקציה זו עוזרת לכם לשמור על תקנות הסגר.",
     "AboutP2": "באמצעותה תבדקו בקלות את המרחק האווירי מביתכם על מנת להישאר בגבולות המוגדרים בתקנות.",
-    "AboutP3": "בנוסף, במידת הצורך, תוכלו להציג את המרחק לשוטר או לפקח ולהימנע מדו״חות."
+    "AboutP3": "בנוסף, במידת הצורך, תוכלו להציג את המרחק לשוטר או לפקח ולהימנע מדו״חות.",
+    "AboutP4": "האפליקציה היא בעלת קוד פתוח:",
+    "SeeTheCode": "לצפות בקוד מקור"
   },
   "ns": "about"
 }
