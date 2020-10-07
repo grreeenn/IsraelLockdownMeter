@@ -10,16 +10,15 @@ export default function TabThreeScreen() {
   return (
     <View style={styles.container}>
       <View>
-        <Text>
+        <Text style={styles.paragraph}>
           {t('AboutP1')}
         </Text>
-        <Text>
+        <Text style={styles.paragraph}>
           {t('AboutP2')}
         </Text>
-        <Text>
+        <Text style={styles.paragraph}>
           {t('AboutP3')}
         </Text>
-
       </View>
     </View>
   );
@@ -30,4 +29,9 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
   },
+  paragraph: {
+    fontSize: 18,
+    marginVertical: 10,
+    marginHorizontal: 5
+  }
 });
