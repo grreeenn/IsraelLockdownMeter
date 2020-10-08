@@ -1,5 +1,5 @@
 import React, {useCallback, useContext, useEffect, useRef, useState} from 'react';
-import {ImageStyle, StyleSheet, TextStyle, ViewStyle} from 'react-native';
+import {ActivityIndicator, ImageStyle, StyleSheet, TextStyle, ViewStyle} from 'react-native';
 import {Text, View} from '../../components/Themed';
 import {ICoordinates} from "../../types/IGeography";
 import {useNavigation} from '@react-navigation/native'
@@ -47,11 +47,9 @@ export default function TabOneScreen() {
       setErrorMsg(t('ErrLocationPermissionDenied'));
     }
     checkUserSettings();
-    if (retries.current < 1) {
-      setStatus(t('StatusGettingLocation'));
-      setIsUpdatingLocation(true);
+    // if (retries.current < 1) {
       await identifyLocation();
-    }
+    // }
   };
 
   const checkUserSettings = () => {
@@ -63,7 +61,13 @@ export default function TabOneScreen() {
 
   const identifyLocation = async () => {
     let location: LocationObject | null = null;
-    retries.current === 0 && setStatus('');
+    if (retries.current === 0) {
+      locationAccuracy.current = null;
+      setLocation(null);
+      setIsUpdatingLocation(true);
+      setStatus(t('StatusGettingLocation'));
+      setDistance(null);
+    }
     retries.current++;
     // console.log('iiiiiiiiiiii:', retries.current);
     try {
@@ -93,9 +97,7 @@ export default function TabOneScreen() {
 
   const refreshLocation = useCallback(() => {
     retries.current = 0;
-    locationAccuracy.current = null;
-    setLocation(null);
-    setIsUpdatingLocation(true);
+
     identifyLocation();
   }, [location, locationAccuracy, context.userSettings]);
 
@@ -124,26 +126,33 @@ export default function TabOneScreen() {
 
   return (
     <View style={styles.container}>
-      {status ? <Text>{status}</Text> : []}
-      {errorMsg ? <Text>{errorMsg}</Text> : []}
 
       {distance ?
         <>
-          <Text>{t('DistanceFromHome')}</Text>
+          <Text style={styles.stateText}>{t('DistanceFromHome')}</Text>
           <Text style={distanceStyle}>
             {distance} {t('Meters')}
           </Text>
+          {locationAccuracy.current ?
+            <Text style={styles.stateText}>{t('LocationAccuracy')}: {locationAccuracy.current} {t('Meters')}</Text>
+            : []
+          }
+          <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)"/>
         </>
         : []
       }
 
+
+      {status ? <Text style={styles.messageText}>{status}</Text> : []}
+
       {!isUpdatingLocation ?
         <>
-          <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)"/>
           <Button title={t('RefreshLocation')} onPress={refreshLocation}/>
-          {locationAccuracy ? <Text>{t('LocationAccuracy')}: {locationAccuracy.current} {t('Meters')}</Text> : []}
         </>
-        : []}
+        : <ActivityIndicator size="large" />
+      }
+
+      {errorMsg ? <Text style={styles.messageText}>{errorMsg}</Text> : []}
     </View>
   );
 }
@@ -161,6 +170,15 @@ const styles = StyleSheet.create({
   },
   distance: {
     fontSize: 50
+  },
+  messageText: {
+    fontSize: 20,
+    marginBottom: 10,
+    marginHorizontal: 15
+  },
+  stateText: {
+    fontSize: 20,
+    marginVertical: 5
   },
   noWarn: {
     color: 'green'

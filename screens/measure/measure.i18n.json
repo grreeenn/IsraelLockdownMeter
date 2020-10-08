@@ -4,10 +4,10 @@
     "ErrNoAddress": "To use this app, please add your address in the settings tab",
     "StatusGettingLocation": "Getting precise location...",
     "StatusNoSkyView": "Looks like you are in a building. GPS works poorly in buildings, please get a sky view",
-    "DistanceFromHome": "Distance from home",
+    "DistanceFromHome": "Distance from home is",
     "Meters": "meters",
     "RefreshLocation": "Refresh location",
-    "LocationAccuracy": "Location accuracy"
+    "LocationAccuracy": "Accurate to"
 
   },
   "he": {
@@ -18,7 +18,7 @@
     "DistanceFromHome": "מרחק מהבית הינו",
     "Meters": "מטרים",
     "RefreshLocation": "רענן מיקום",
-    "LocationAccuracy": "המיקום מדויק עד"
+    "LocationAccuracy": "מדויק עד"
   },
   "ns": "measure"
 }

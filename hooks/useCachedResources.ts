@@ -24,25 +24,29 @@ export default function useCachedResources() {
         // init translations
         await i18n.init();
         const RNDir = RNI18nManager.isRTL ? 'RTL' : 'LTR';
+
         // RN doesn't always correctly identify native
         // locale direction, so we force it here.
         if (i18n.dir !== RNDir) {
           const isLocaleRTL = i18n.dir === 'RTL';
-          RNI18nManager.forceRTL(isLocaleRTL);
+          await RNI18nManager.forceRTL(isLocaleRTL);
 
           // RN won't set the layout direction if we
           // don't restart the app's JavaScript.
-          // this call won't restart it either, though :(
-          reloadAsync();
+          setTimeout(async () => await reloadAsync(), 1000);
         }
+          setLoadingComplete(true);
+          hideAsync();
+
+
 
       } catch (e) {
         // We might want to provide this error information to an error reporting service
         console.warn(e);
-      } finally {
-        setLoadingComplete(true);
-        hideAsync();
       }
+      // finally {
+      //
+      // }
     }
 
     loadResourcesAndDataAsync();

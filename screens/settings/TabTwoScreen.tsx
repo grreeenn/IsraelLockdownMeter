@@ -8,7 +8,7 @@ import Button from "../../components/Button";
 import {saveToStorage} from "../../utils/LocalStorage";
 import {IAddress} from "../../types/IGeography";
 import {GlobalContext} from "../../GlobalContext";
-import { useTranslation } from 'react-i18next';
+import {useTranslation} from 'react-i18next';
 
 
 export default function TabTwoScreen() {
@@ -22,6 +22,7 @@ export default function TabTwoScreen() {
   useEffect(() => {
     // console.log('---------STATE 2!!----------')
     setInitState();
+
   }, [])
 
   const setInitState = async () => {
@@ -75,11 +76,6 @@ export default function TabTwoScreen() {
 
   return (
     <View style={styles.container}>
-      <View style={{alignItems: "center"}}>
-        <Text style={styles.title}>{t('Settings')}</Text>
-        <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)"/>
-      </View>
-
       {
         !isSettingAddress ?
           <View style={styles.valueAndControls}>
@@ -97,7 +93,8 @@ export default function TabTwoScreen() {
             </View>
           </View>
           :
-          <AddressSelect placeholder={t('AddressPlaceholder')} emit={setAddress} initValue={context.userSettings?.address}/>
+          <AddressSelect placeholder={t('AddressPlaceholder')} emit={setAddress}
+                         initValue={context.userSettings?.address}/>
       }
 
       {
@@ -130,22 +127,12 @@ export default function TabTwoScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // alignItems: 'center',
     justifyContent: 'center',
-  },
-  title: {
-    fontSize: 20,
-    fontWeight: 'bold',
   },
   values: {
     fontSize: 18,
     fontWeight: 'bold',
     textAlign: "left"
-  },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
   },
   valueAndControls: {
     margin: 20

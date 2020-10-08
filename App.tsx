@@ -10,7 +10,6 @@ import {getFromLocalStorage} from "./utils/LocalStorage";
 import {IAddress} from "./types/IGeography";
 import {GlobalContext} from "./GlobalContext";
 
-
 export default function App() {
 
   const isLoadingComplete = useCachedResources();
