@@ -1,4 +1,4 @@
-import React, {useCallback, useContext, useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {Linking, Platform, StyleSheet} from 'react-native';
 import {Text, View} from '../../components/Themed';
 import AddressSelect from "../../components/form-fields/AddressSelect";
@@ -61,7 +61,7 @@ export default function TabTwoScreen() {
     setIsSettingDistance(true);
   }
 
-  const goToMap = useCallback(() => {
+  const goToMap = () => {
     const address = context.userSettings?.address;
     if (address) {
       const latlon = `${address.coordinates.lat},${address.coordinates.lon}`
@@ -72,7 +72,7 @@ export default function TabTwoScreen() {
 
       url && Linking.openURL(url);
     }
-  }, []);
+  };
 
   return (
     <View style={styles.container}>
@@ -80,7 +80,7 @@ export default function TabTwoScreen() {
         !isSettingAddress ?
           <View style={styles.valueAndControls}>
             <View style={styles.valueContainer}>
-              <Text>
+              <Text style={styles.valueCaption}>
                 {t('AddressCaption')}
               </Text>
               <Text style={styles.values}>
@@ -101,7 +101,7 @@ export default function TabTwoScreen() {
         !isSettingDistance ?
           <View style={styles.valueAndControls}>
             <View style={styles.valueContainer}>
-              <Text>
+              <Text style={styles.valueCaption}>
                 {t('DistanceCaption')}
               </Text>
               <Text style={styles.values}>
@@ -140,9 +140,13 @@ const styles = StyleSheet.create({
   valueContainer: {
     marginVertical: 10
   },
+  valueCaption: {
+    textAlign: "left"
+  },
   buttonsContainer: {
-    flexDirection: 'row-reverse',
+    flexDirection: 'row',
     alignItems: 'flex-end',
+    alignSelf: "flex-end"
   },
   controlButton: {
     marginHorizontal: 5,

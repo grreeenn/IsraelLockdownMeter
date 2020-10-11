@@ -34,9 +34,11 @@ export default function AddressSelect(props: TAutocompleteProps<IAddress>) {
         props.emit(value);
         setError(null);
       } else {
-
+        setError(t('AddressNotFound'));
         props.emit(null);
       }
+    } else {
+      props.emit(null);
     }
   }
 
@@ -57,11 +59,12 @@ export default function AddressSelect(props: TAutocompleteProps<IAddress>) {
           <Button title={t('Set')} onPress={geocodeAndEmit}/>
         </View>
       </View>
-      <View style={styles.row}>
-        {
-          error ? <Text style={styles.errorText}>{error}</Text> : []
-        }
-      </View>
+      {
+        error ?
+          <View>
+            <Text style={styles.errorText}>{error}</Text>
+          </View>
+          : []}
     </View>
   )
 }

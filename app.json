@@ -3,7 +3,7 @@
     "name": "מרחק מהבית",
     "description": "אפליקציה זו עוזרת לכם לשמור על תקנות הסגר. באמצעותה תבדקו בקלות את המרחק האווירי מביתכם על מנת להישאר בגבולות המוגדרים בתקנות. בנוסף, במידת הצורך, תוכלו להציג את המרחק לשוטר או לפקח ולהימנע מדו״חות.",
     "slug": "IsHomeFar",
-    "version": "1.0.0",
+    "version": "1.1.1",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "ishomefar",
@@ -21,7 +21,7 @@
     ],
     "ios": {
       "bundleIdentifier": "org.grreeenn.ishomefar",
-      "buildNumber": "1.0",
+      "buildNumber": "1.1.1",
       "supportsTablet": false,
       "icon": "./assets/images/icon_ios.png",
       "usesIcloudStorage": false,
@@ -29,6 +29,9 @@
       "infoPlist": {
         "CFBundleAllowMixedLocalizations": true,
         "NSLocationWhenInUseUsageDescription": "We need to access your location to calculate the distance to your home"
+      },
+      "config": {
+        "usesNonExemptEncryption": false
       }
     },
     "locales": {
@@ -39,10 +42,10 @@
       "favicon": "./assets/images/favicon.png"
     },
     "android": {
-      "versionCode": 1,
+      "versionCode": 3,
       "package": "org.grreeenn.ishomefar",
       "permissions": ["ACCESS_COARSE_LOCATION", "ACCESS_FINE_LOCATION"],
-      "icon": "./assets/images/icon_ios.png",
+      "icon": "./assets/images/icon_android.png",
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon-fg.png",
         "backgroundImage": "./assets/images/adaptive-icon-bg.png",

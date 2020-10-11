@@ -1,9 +1,11 @@
 {
   "en": {
-    "Set": "Set"
+    "Set": "Set",
+    "AddressNotFound": "Address not found"
   },
   "he": {
-    "Set": "עדכן"
+    "Set": "עדכן",
+    "AddressNotFound": "הכתובת לא נמצאה"
   },
   "ns": "formFields"
 }

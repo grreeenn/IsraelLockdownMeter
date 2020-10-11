@@ -2,15 +2,14 @@ import {StyleSheet} from "react-native";
 
 const formFieldStyles = StyleSheet.create({
   componentContainer: {
-    alignItems: "center",
-    alignContent: "center",
-    marginVertical: 10
+    // alignItems: "center",
+    margin: 20
   },
   row: {
     flexDirection: "row",
   },
   inputAndButtonContainer: {
-    flex: 0.9,
+    flex: 0.99,
     flexDirection: "row",
   },
   inputContainer: {
@@ -26,7 +25,10 @@ const formFieldStyles = StyleSheet.create({
     marginHorizontal: 10
   },
   errorText: {
-    color: 'red'
+    color: 'red',
+    alignContent: "flex-start",
+    alignItems: "flex-start",
+    alignSelf: "flex-start"
   }
 });
 

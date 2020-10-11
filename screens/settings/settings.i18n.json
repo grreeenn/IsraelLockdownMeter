@@ -1,7 +1,7 @@
 {
   "en": {
     "Settings": "Settings",
-    "AddressPlaceholder": "Set your address",
+    "AddressPlaceholder": "Set your address (write in Hebrew for best results)",
     "AddressCaption": "Your address",
     "DistancePlaceholder": "Set permitted distance",
     "DistanceCaption": "Permitted distance is",
@@ -13,10 +13,10 @@
   },
   "he": {
     "Settings": "הגדרות",
-    "AddressPlaceholder": "הזן כתובתך",
-    "AddressCaption": "כתובתך",
+    "AddressPlaceholder": "הזן את הכתובת שלך",
+    "AddressCaption": "הכתובת שלך היא",
     "DistancePlaceholder": "הזן את המרחק המותר",
-    "DistanceCaption": "המרחק המותר",
+    "DistanceCaption": "המרחק המותר הוא",
     "Set": "אישור",
     "ShowOnMap": "הצג על המפה",
     "ChangeAddress": "שינוי כתובת",

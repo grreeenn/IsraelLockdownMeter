@@ -35,7 +35,7 @@ export default function TabOneScreen() {
   useEffect(() => {
     if (retries.current > 0) {
       console.log('---------CONTEXT UPDATED!!----------', retries.current);
-      setErrorMsg(null);
+      checkUserSettings();
       refreshLocation();
     }
 
@@ -56,6 +56,8 @@ export default function TabOneScreen() {
     if (!context?.userSettings?.address) {
       navigation.navigate('Settings');
       setErrorMsg(t('ErrNoAddress'));
+    } else {
+      setErrorMsg(null);
     }
   }
 
@@ -126,7 +128,6 @@ export default function TabOneScreen() {
 
   return (
     <View style={styles.container}>
-
       {distance ?
         <>
           <Text style={styles.stateText}>{t('DistanceFromHome')}</Text>
